@@ -1,1 +1,1 @@
-from rdfpy import *
+from rdfpy import rdf2d, rdf3d
