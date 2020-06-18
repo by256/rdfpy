@@ -4,7 +4,7 @@ import numpy as np
 def rdf2d(particles, p_radius, h, w, n_radii=None, dr=None):
     """Computes 2D radial disribution functions (g(r)) of a set of particles of shape (N, 2).
 
-    :param particles: set of particles.
+    :param particles: set of particles of shape (N, 2).
     :type name: np.array
     :param p_radius: radius of particles.
     :type p_radius: float
@@ -20,9 +20,7 @@ def rdf2d(particles, p_radius, h, w, n_radii=None, dr=None):
     :returns:
         - g_r (np.array) - radial distribution function values (g(r)) (dependent variable).
         - radii (np.array) - radii over which g(r) is computed (independent variable).
-
     """
-
 
     centre_y, centre_x = h/2, w/2
     min_x, max_x = np.min(particles[:, 0]), np.max(particles[:, 0])
@@ -66,6 +64,28 @@ def rdf2d(particles, p_radius, h, w, n_radii=None, dr=None):
 
 
 def rdf3d(particles, p_radius, h, w, d, n_radii=None, dr=None):
+    """Computes 3D radial disribution functions (g(r)) of a set of particles of shape (N, 3).
+
+    :param particles: set of particles of shape (N, 3).
+    :type name: np.array
+    :param p_radius: radius of particles.
+    :type p_radius: float
+    :param h: height of the box containing the particles.
+    :type h: float
+    :param w: width of the box containing the particles.
+    :type w: float
+    :param d: width of the box containing the particles.
+    :type d: float
+    :param n_radii: number of radii over which to compute g(r). Should not be specified if dr is specified.
+    :type n_radii: int
+    :param dr: \delta r. Determines the spacing between successive radii over which g(r) is computed. Should not be specified if n_radii is specified.
+    :type dr: int
+    
+    :returns:
+        - g_r (np.array) - radial distribution function values (g(r)) (dependent variable).
+        - radii (np.array) - radii over which g(r) is computed (independent variable).
+    """
+
     centre_y, centre_x, centre_z = h / 2, w / 2, d / 2
     min_x, max_x = np.min(particles[:, 0]), np.max(particles[:, 0])
     min_y, max_y = np.min(particles[:, 1]), np.max(particles[:, 1])
