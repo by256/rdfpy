@@ -2,9 +2,7 @@
 
 rdfpy is a Python package for computing 2D and 3D radial distribution functions. 
 
-![Alt text](examples/random2d.png)
-
-<!-- ![Alt text](examples/random3d.png) -->
+![Alt text](rdfpy/examples/random2d.png)
 
 ## Installation
 
@@ -31,5 +29,3 @@ g_r, radii = rdf3d(particles, r, h=10, w=10, d=10, n_radii=128)
 ## License
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
-
-<!-- - **[MIT license](http://opensource.org/licenses/mit-license.php)** -->
