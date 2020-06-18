@@ -1,11 +1,22 @@
 import setuptools
 
-setuptools.setup(name='rdfpy',
+with open("README.md", "r") as f:
+    long_description = f.read()
+
+setuptools.setup(
+    name='rdfpy-by256',
     version='0.1',
     description='rdfpy is a Python package for computing 2D and 3D radial distribution functions.',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Batuhan Yildirim',
     author_email='by256@cam.ac.uk',
     url='https://github.com/by256/rdfpy',
-    install_requires=['numpy', 'matplotlib'],
-    license='MIT'
+    packages=setuptools.find_packages(),
+    license='MIT',
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
      )
