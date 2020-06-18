@@ -2,7 +2,7 @@ import numpy as np
 
 
 def rdf2d(particles, p_radius, h, w, n_radii=None, dr=None):
-    centre_y, centre_x, centre_z = h/2, w/2, d/2
+    centre_y, centre_x = h/2, w/2
     min_x, max_x = np.min(particles[:, 0]), np.max(particles[:, 0])
     min_y, max_y = np.min(particles[:, 1]), np.max(particles[:, 1])
 
