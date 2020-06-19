@@ -5,7 +5,7 @@ with open('./README.md', 'r') as f:
 
 setuptools.setup(
     name='rdfpy',
-    version='0.1.2',
+    version='0.1.3',
     description='rdfpy is a Python package for computing 2D and 3D radial distribution functions.',
     long_description=long_description,
     long_description_content_type='text/markdown',
