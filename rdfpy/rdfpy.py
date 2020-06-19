@@ -53,7 +53,7 @@ def rdf2d(particles, p_radius, h, w, n_radii=None, dr=None):
             n = len(distances[(distances >= r) & (distances < r+dr)])
             particles_individual_counts[p_idx, r_idx] = n
 
-        scaling_factor = 1 / (n_valid*2*np.pi*r*dr)
+        scaling_factor = 1 / (n_valid*np.pi*((r+dr)**2 - r**2))
         particles_individual_counts[:, r_idx] = particles_individual_counts[:, r_idx] * scaling_factor
         print('{}/{}'.format(r_idx+1, len(radii)), end='\r', flush=True)
 
@@ -119,7 +119,7 @@ def rdf3d(particles, p_radius, h, w, d, n_radii=None, dr=None):
             n = len(distances[(distances >= r) & (distances < r+dr)])
             particles_individual_counts[p_idx, r_idx] = n
 
-        scaling_factor = 1 / (n_valid*4*np.pi*(r**2)*dr)
+        scaling_factor = 1 / (n_valid*(4/3)*np.pi*((r+dr)**3 - r**3))
         particles_individual_counts[:, r_idx] = particles_individual_counts[:, r_idx] * scaling_factor
         print('{}/{}'.format(r_idx+1, len(radii)), end='\r', flush=True)
 
