@@ -3,6 +3,8 @@
 rdfpy is a Python library for computing fast 2D and 3D radial distribution functions. 
 
 ![Alt text](rdfpy/examples/crystal.png)
+![Alt text](rdfpy/examples/water.png)
+
 
 
 ## Installation
@@ -21,6 +23,8 @@ particles = np.random.uniform(0.0, 10.0, size=(1000, 3))  # random particles in 
 
 g_r, radii = rdf3d(particles, dr=0.1)
 ```
+
+**Note:** In order for rdfpy to work correctly, your particles should spatially be in a cuboidal box, where the entire box is filled with particles.
 
 ## Authors
 
