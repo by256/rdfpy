@@ -19,7 +19,7 @@ $ pip install rdfpy
 import numpy as np
 from rdfpy import rdf3d
 
-particles = np.random.uniform(0.0, 10.0, size=(1000, 3))  # random particles in a 10x10x10 box
+particles = np.random.uniform(0.0, 20.0, size=(2500, 3))  # random particles in a 20x20x20 box
 
 g_r, radii = rdf3d(particles, dr=0.1)
 ```
