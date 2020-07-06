@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from rdfpy import rdf3d
 
+# particle positions were obtained from http://www.ergoscf.org/xyz/h2o.php
 particles = np.load('./water.npy')
 
 fig = plt.figure(figsize=(9, 9))
