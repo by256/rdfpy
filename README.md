@@ -6,9 +6,11 @@ rdfpy is a Python library for fast computation of 2D and 3D radial distribution 
 
 The radial distribution function (RDF) (or pair correlation function) characterises the structure of a system of particles. If we select an arbitrary particle as the origin, the RDF describes the number of particles we would observe relative to the bulk density of the system, as a function of distance. This is calculated and averaged over every particle in the structure being considered. The formal definition of the RDF is
 
-$$g_{i}(r) = \frac{n_{i}(r)}{4 \pi r^{2}\delta r \rho} $$
+<p align="center">
+  <img src="https://render.githubusercontent.com/render/math?math=g_{i}(r) = \frac{n_{i}(r)}{4 \pi r^{2}\delta r \rho}">
+</p>
 
-where $n_{i}(r)$ is the number of particles between distances $r$ and $r + \delta r$ and $\rho = \frac{N}{V}$ is the number density. Dividing by $\rho$ ensures that the RDF is centred around $1$ when the density of particles observed at some distance does not deviate from the bulk density. Below are two examples of (1) a highly-ordered crystalline system and (2) a short-range ordered liquid.
+where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)"> is the number of particles between distances <img src="https://render.githubusercontent.com/render/math?math=r"> and <img src="https://render.githubusercontent.com/render/math?math=r %2B \delta r">, and <img src="https://render.githubusercontent.com/render/math?math=\rho = \frac{N}{V}"> is the number density. Dividing by <img src="https://render.githubusercontent.com/render/math?math=\rho"> ensures that the RDF is centred around 1 when the density of particles observed at some distance does not deviate from the bulk density. Below are two examples of (1) a highly-ordered crystalline system and (2) a short-range ordered liquid.
 
 ![Alt text](rdfpy/examples/crystal.png)
 ![Alt text](rdfpy/examples/water.png)
