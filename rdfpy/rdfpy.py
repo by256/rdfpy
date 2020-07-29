@@ -80,9 +80,7 @@ def rdf3d(particles, dr, rho=None, eps=1e-15):
     dr : float
         Delta r. Determines the spacing between successive radii over which g(r) is computed.
     rho : float, optional
-        Number density. In cases where the number of particles is relatively low, or the 
-        particle:box size ratio is small, it may be better to provide your own number density 
-        for more accurate results. If left as None, box dimensions will be inferred from the 
+        Number density. If left as None, box dimensions will be inferred from the 
         particles and the number density will be calculated accordingly.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
