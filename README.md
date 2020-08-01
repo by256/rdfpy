@@ -39,7 +39,7 @@ where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)">
 
 ## Authors
 
-[Batuhan Yildirim](http://www.mole.phy.cam.ac.uk/people/by.php)
+[Batuhan Yildirim](https://by256.github.io/)
 
 ## Citation
 
