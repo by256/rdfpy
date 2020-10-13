@@ -2,11 +2,6 @@
 
 rdfpy is a Python library for fast computation of 2D and 3D radial distribution functions.
 
-<p float="left"  align="center">
-  <img src="rdfpy/examples/crystal.png" width="400" />
-  <img src="rdfpy/examples/water.png" width="400" /> 
-</p>
-
 ## Installation
 
 ```shell
@@ -34,7 +29,12 @@ The radial distribution function (RDF) (or pair correlation function) characteri
   <img src="https://render.githubusercontent.com/render/math?math=g_{i}(r) = \frac{n_{i}(r)}{4 \pi r^{2}\delta r \rho}">
 </p>
 
-where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)"> is the number of particles between distances <img src="https://render.githubusercontent.com/render/math?math=r"> and <img src="https://render.githubusercontent.com/render/math?math=r %2B \delta r">, and <img src="https://render.githubusercontent.com/render/math?math=\rho = \frac{N}{V}"> is the number density. Dividing by <img src="https://render.githubusercontent.com/render/math?math=\rho"> ensures that the RDF is centred around 1 when the density of particles observed at some distance does not deviate from the bulk density. Two examples of (1) a highly-ordered crystalline system and (2) a short-range ordered liquid are shown at the top of the readme.
+where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)"> is the number of particles between distances <img src="https://render.githubusercontent.com/render/math?math=r"> and <img src="https://render.githubusercontent.com/render/math?math=r %2B \delta r">, and <img src="https://render.githubusercontent.com/render/math?math=\rho = \frac{N}{V}"> is the number density. Dividing by <img src="https://render.githubusercontent.com/render/math?math=\rho"> ensures that the RDF is centred around 1 when the density of particles observed at some distance does not deviate from the bulk density. Two examples of (1) a highly-ordered crystalline system and (2) a short-range ordered liquid are shown.
+
+<p float="left"  align="center">
+  <img src="rdfpy/examples/crystal.png" width="400" />
+  <img src="rdfpy/examples/water.png" width="400" /> 
+</p>
 
 ## Authors
 
