@@ -1,6 +1,10 @@
 Introduction and Examples
 =========================
 
+
+What are Radial Dsitribution Functions?
+--------------------------------------
+
 The radial distribution function (RDF) (or pair correlation function) characterises the structure of a 
 system of particles. If we select an arbitrary particle as the origin, the RDF describes the number of 
 particles we would observe relative to the bulk density of the system, as a function of distance. 
@@ -13,16 +17,8 @@ definition of the RDF is
 where :math:`n_{i}(r)` is the number of particles between distances :math:`r` and :math:`\delta r`, 
 and :math:`\rho = \frac{N}{V}` is the number density. Dividing by :math:`\rho` ensures that the RDF 
 is centred around 1 when the density of particles observed at some distance does not deviate from the 
-bulk density. Two examples of (1) a highly-ordered crystalline system and (2) a short-range ordered 
-liquid are shown.
+bulk density. 
 
-|pic1| |pic2|
-
-.. |pic1| image:: ../../rdfpy/examples/crystal.png 
-   :width: 49%
-
-.. |pic2| image:: ../../rdfpy/examples/water.png 
-   :width: 49%
 
 Example: RDF of a Crystal Structure
 -----------------------------------
@@ -33,8 +29,7 @@ and is provided by the  `Materials Project <https://materialsproject.org/>`_. Fi
 function from **rdfpy**, as well as pymatgen for obtaining atom coordinates from the CIF file, and numpy.
 
 We then load the structure and create a supercell so that there are enough atoms in the crystal to compute 
-an RDF from. We then add some noise to the coordinates to smooth out the RDF. Finally, the RDF is computed 
-using **rdfpy**.
+an RDF from. Also, to make the resulting function smoother, we add some noise to the coordinates.
 
 .. code-block:: python
 
@@ -58,7 +53,7 @@ Finally we use **rdfpy** to compute the RDF from the coordinates, specifying the
 
    g_r, radii = rdf3d(coords, dr=0.05)
 
-Plotting ``g_r`` and ``radii`` results in
+Plotting ``g_r`` against ``radii`` results in the following function.
 
 .. image:: ./Ti-rdf.png
    :width: 500
