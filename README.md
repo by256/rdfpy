@@ -21,6 +21,7 @@ g_r, radii = rdf3d(particles, dr=0.1)
 
 **Note:** In order for rdfpy to work correctly, your particles should spatially be in a cuboidal box, where the entire box is filled with particles.
 
+<!-- 
 ### What is a Radial Distribution Function?
 
 The radial distribution function (RDF) (or pair correlation function) characterises the structure of a system of particles. If we select an arbitrary particle as the origin, the RDF describes the number of particles we would observe relative to the bulk density of the system, as a function of distance. This is calculated and averaged over every particle in the structure being considered. The formal definition of the RDF is
@@ -34,7 +35,7 @@ where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)">
 <p float="left"  align="center">
   <img src="rdfpy/examples/crystal.png" width="400" />
   <img src="rdfpy/examples/water.png" width="400" /> 
-</p>
+</p> -->
 
 ## Authors
 
