@@ -23,3 +23,35 @@ liquid are shown.
 
 .. |pic2| image:: ../../rdfpy/examples/water.png 
    :width: 49%
+
+Example: RDF of a Crystal Structure
+-----------------------------------
+
+In this example, we use **rdfpy** compute the RDF of Crystalline Ti. The Crystallographic Information 
+File (CIF) can be obtained from `here <https://materialsproject.org/materials/mp-46/#>`_, 
+and is provided by the  `Materials Project <https://materialsproject.org/>`_. First we import the `rdf3d` 
+function from **rdfpy**, as well as pymatgen for obtaining atom coordinates from the CIF file, and numpy.
+
+We then load the structure and create a supercell so that there are enough atoms in the crystal to compute 
+an RDF from. We then add some noise to the coordinates to smooth out the RDF. Finally, the RDF is computed 
+using **rdfpy**.
+
+.. code-block:: python
+
+   import numpy as np
+   from rdfpy import rdf3d
+   from pymatgen import Structure
+
+   structure = Structure.from_file('/home/by256/Downloads/Ti_mp-46_computed.cif')
+   structure.make_supercell(10)
+
+   coords = structure.cart_coords
+   coords = coords + np.random.normal(loc=0.0, scale=0.05, size=(coords.shape))
+
+.. image:: ./Ti.pdf
+   :width: 400
+   :align: center
+
+.. code-block:: python
+
+   g_r, radii = rdf3d(coords, dr=0.05)
