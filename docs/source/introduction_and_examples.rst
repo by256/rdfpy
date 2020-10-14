@@ -48,10 +48,18 @@ using **rdfpy**.
    coords = structure.cart_coords
    coords = coords + np.random.normal(loc=0.0, scale=0.05, size=(coords.shape))
 
-.. image:: ./Ti.pdf
-   :width: 400
+.. image:: ./Ti.png
+   :width: 300
    :align: center
+
+Finally we use **rdfpy** to compute the RDF from the coordinates, specifying the step size parameter ``dr``:
 
 .. code-block:: python
 
    g_r, radii = rdf3d(coords, dr=0.05)
+
+Plotting ``g_r`` and ``radii`` results in
+
+.. image:: ./Ti-rdf.png
+   :width: 500
+   :align: center
