@@ -8,6 +8,5 @@ rdfpy is a Python library for fast computation of 2D and 3D radial distribution 
    :caption: Contents:
 
    installation
-   introduction
-   examples
+   introduction_and_examples
    licence
