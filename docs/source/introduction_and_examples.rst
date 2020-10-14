@@ -29,7 +29,7 @@ Example: RDF of a Crystal Structure
 
 In this example, we use **rdfpy** compute the RDF of Crystalline Ti. The Crystallographic Information 
 File (CIF) can be obtained from `here <https://materialsproject.org/materials/mp-46/#>`_, 
-and is provided by the  `Materials Project <https://materialsproject.org/>`_. First we import the `rdf3d` 
+and is provided by the  `Materials Project <https://materialsproject.org/>`_. First we import the ``rdf3d`` 
 function from **rdfpy**, as well as pymatgen for obtaining atom coordinates from the CIF file, and numpy.
 
 We then load the structure and create a supercell so that there are enough atoms in the crystal to compute 
