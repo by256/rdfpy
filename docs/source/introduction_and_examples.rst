@@ -41,7 +41,8 @@ an RDF from. Also, to make the resulting function smoother, we add some noise to
    structure.make_supercell(10)
 
    coords = structure.cart_coords
-   coords = coords + np.random.normal(loc=0.0, scale=0.05, size=(coords.shape))
+   noise = np.random.normal(loc=0.0, scale=0.05, size=(coords.shape))
+   coords = coords + noise
 
 .. image:: ./Ti.png
    :width: 300
