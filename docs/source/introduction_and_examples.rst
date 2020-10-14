@@ -2,8 +2,8 @@ Introduction and Examples
 =========================
 
 
-What are Radial Dsitribution Functions?
---------------------------------------
+What are Radial Distribution Functions?
+---------------------------------------
 
 The radial distribution function (RDF) (or pair correlation function) characterises the structure of a 
 system of particles. If we select an arbitrary particle as the origin, the RDF describes the number of 
