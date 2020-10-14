@@ -19,6 +19,8 @@ particles = np.random.uniform(0.0, 20.0, size=(2500, 3))  # random particles in 
 g_r, radii = rdf3d(particles, dr=0.1)
 ```
 
+You can find a more detailed example in the [Documentation](https://rdfpy.readthedocs.io/).
+
 **Note:** In order for rdfpy to work correctly, your particles should spatially be in a cuboidal box, where the entire box is filled with particles.
 
 <!-- 
