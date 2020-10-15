@@ -23,7 +23,7 @@ bulk density.
 Example: RDF of a Crystal Structure
 -----------------------------------
 
-In this example, we use **rdfpy** to compute the RDF of Crystalline Ti. The Crystallographic Information 
+In this example, we use **rdfpy** to compute the RDF of crystalline Ti. The Crystallographic Information 
 File (CIF) can be obtained from `here <https://materialsproject.org/materials/mp-46/#>`_, 
 and is provided by the  `Materials Project <https://materialsproject.org/>`_. First we import the ``rdf3d`` 
 function from **rdfpy**, as well as pymatgen for obtaining atom coordinates from the CIF file, and numpy.
