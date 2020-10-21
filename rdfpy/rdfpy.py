@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 
-def rdf2d(particles, dr, rho=None, eps=1e-15):
+def rdf2d(particles, dr, rho=None, eps=1e-15, printProgress = True):
     """
     Computes 2D radial disribution functions g(r) of a set of particles of shape (N, 2).
     Particle must be placed in a 2D box of dimensions (width x height).
@@ -19,6 +19,8 @@ def rdf2d(particles, dr, rho=None, eps=1e-15):
         particles and the number density will be calculated accordingly.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
+    printProgress : bool, optional
+        Set to False to disable progress readout.
         
     
     Returns
@@ -63,12 +65,13 @@ def rdf2d(particles, dr, rho=None, eps=1e-15):
         shell_vol = np.pi*((r+dr)**2 - r**2)
         g_r[r_idx] /= n_valid*shell_vol*rho
 
-        print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
+        if printProgress:
+            print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
         
     return g_r, radii
 
 
-def rdf3d(particles, dr, rho=None, eps=1e-15):
+def rdf3d(particles, dr, rho=None, eps=1e-15, printProgress = True):
     """
     Computes 3D radial disribution functions g(r) of a set of particles of shape (N, 3).
     Particle must be placed in a 3D cuboidal box of dimensions (width x height x depth).
@@ -84,6 +87,8 @@ def rdf3d(particles, dr, rho=None, eps=1e-15):
         particles and the number density will be calculated accordingly.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
+    printProgress : bool, optional
+        Set to False to disable progress readout.
         
     
     Returns
@@ -129,6 +134,7 @@ def rdf3d(particles, dr, rho=None, eps=1e-15):
         shell_vol = (4/3)*np.pi*((r+dr)**3 - r**3)
         g_r[r_idx] /= n_valid*shell_vol*rho
 
-        print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
+        if printProgress:
+            print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
         
     return g_r, radii
