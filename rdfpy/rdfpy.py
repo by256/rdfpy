@@ -49,7 +49,7 @@ def rdf2d(particles, dr, rho=None, eps=1e-15, print_progress=True):
     if not rho:
         rho = N / (w*h) # number density
 
-    # create a KDTree for fast nearest-neighbour lookup of particles
+    # create a KDTree for fast nearest-neighbor lookup of particles
     tree = cKDTree(particles)
     
     for r_idx, r in enumerate(radii):
@@ -120,7 +120,7 @@ def rdf3d(particles, dr, rho=None, eps=1e-15, print_progress=True):
     if not rho:
         rho = N / (w*h*d) # number density
 
-    # create a KDTree for fast nearest-neighbour lookup of particles
+    # create a KDTree for fast nearest-neighbor lookup of particles
     tree = cKDTree(particles)
     
     for r_idx, r in enumerate(radii):
