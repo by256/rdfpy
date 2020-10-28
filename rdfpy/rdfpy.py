@@ -3,11 +3,11 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 
-def rdf2d(particles, dr, rho=None, eps=1e-15):
+def rdf2d(particles, dr, rho=None, eps=1e-15, print_progress=True):
     """
     Computes 2D radial disribution functions g(r) of a set of particles of shape (N, 2).
     Particle must be placed in a 2D box of dimensions (width x height).
-    
+   
     Parameters
     ----------
     particles : (N, 2) np.array
@@ -15,10 +15,12 @@ def rdf2d(particles, dr, rho=None, eps=1e-15):
     dr : float
         Delta r. Determines the spacing between successive radii over which g(r) is computed.
     rho : float, optional
-        Number density. If left as None, box dimensions will be inferred from the 
+        Number density. If left as None, box dimensions will be inferred from the
         particles and the number density will be calculated accordingly.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
+    print_progress : bool, optional
+        Set to False to disable progress readout.
         
     
     Returns
@@ -63,12 +65,13 @@ def rdf2d(particles, dr, rho=None, eps=1e-15):
         shell_vol = np.pi*((r+dr)**2 - r**2)
         g_r[r_idx] /= n_valid*shell_vol*rho
 
-        print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
+        if print_progress:
+            print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
         
     return g_r, radii
 
 
-def rdf3d(particles, dr, rho=None, eps=1e-15):
+def rdf3d(particles, dr, rho=None, eps=1e-15, print_progress=True):
     """
     Computes 3D radial disribution functions g(r) of a set of particles of shape (N, 3).
     Particle must be placed in a 3D cuboidal box of dimensions (width x height x depth).
@@ -84,6 +87,8 @@ def rdf3d(particles, dr, rho=None, eps=1e-15):
         particles and the number density will be calculated accordingly.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
+    print_progress : bool, optional
+        Set to False to disable progress readout.
         
     
     Returns
@@ -129,6 +134,7 @@ def rdf3d(particles, dr, rho=None, eps=1e-15):
         shell_vol = (4/3)*np.pi*((r+dr)**3 - r**3)
         g_r[r_idx] /= n_valid*shell_vol*rho
 
-        print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
+        if print_progress:
+            print('Computing RDF     Radius {}/{}    Time elapsed: {:.3f} s'.format(r_idx+1, len(radii), time.time()-start), end='\r', flush=True)
         
     return g_r, radii
