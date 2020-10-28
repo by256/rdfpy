@@ -121,15 +121,18 @@ def rdf3d(particles, dr, rho=None, eps=1e-15, print_progress=True):
     tree = cKDTree(particles)
     
     for r_idx, r in enumerate(radii):
+        # find all particles that are at least r + dr away from the edges of the box
         valid_idxs = (particles[:, 0]-(r+dr) >= min_x) & (particles[:, 0]+(r+dr) <= max_x) \
                    & (particles[:, 1]-(r+dr) >= min_y) & (particles[:, 1]+(r+dr) <= max_y) \
                    & (particles[:, 2]-(r+dr) >= min_z) & (particles[:, 2]+(r+dr) <= max_z)
         valid_particles = particles[valid_idxs]
         
+        # compute n_i(r) for valid particles.
         for particle in valid_particles:
             n = tree.query_ball_point(particle, r+dr-eps, return_length=True) - tree.query_ball_point(particle, r, return_length=True)
             g_r[r_idx] += n
         
+        # normalize
         n_valid = len(valid_particles)
         shell_vol = (4/3)*np.pi*((r+dr)**3 - r**3)
         g_r[r_idx] /= n_valid*shell_vol*rho
