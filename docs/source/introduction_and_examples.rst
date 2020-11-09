@@ -37,7 +37,7 @@ an RDF from. Also, to make the resulting function smoother, we add some noise to
    from rdfpy import rdf3d
    from pymatgen import Structure
 
-   structure = Structure.from_file('/home/by256/Downloads/Ti_mp-46_computed.cif')
+   structure = Structure.from_file('/path/to/Ti_mp-46_computed.cif')
    structure.make_supercell(10)
 
    coords = structure.cart_coords
