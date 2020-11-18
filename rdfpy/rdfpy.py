@@ -5,13 +5,13 @@ from scipy.spatial import cKDTree
 
 def rdf2d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
     """
-    Computes 2D radial disribution functions g(r) of a set of particles of shape (N, 2).
+    Computes 2D radial distribution functions g(r) of a set of particles of shape (N, 2).
     Particle must be placed in a 2D box of dimensions (width x height).
    
     Parameters
     ----------
     particles : (N, 2) np.array
-        Set of particle from which to compute the radial distribution funntion g(r).
+        Set of particle from which to compute the radial distribution function g(r).
     dr : float
         Delta r. Determines the spacing between successive radii over which g(r) is computed.
     rho : float, optional
@@ -81,13 +81,13 @@ def rdf2d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
 
 def rdf3d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
     """
-    Computes 3D radial disribution functions g(r) of a set of particles of shape (N, 3).
+    Computes 3D radial distribution functions g(r) of a set of particles of shape (N, 3).
     Particle must be placed in a 3D cuboidal box of dimensions (width x height x depth).
     
     Parameters
     ----------
     particles : (N, 3) np.array
-        Set of particle from which to compute the radial distribution funntion g(r).
+        Set of particle from which to compute the radial distribution function g(r).
     dr : float
         Delta r. Determines the spacing between successive radii over which g(r) is computed.
     rho : float, optional
