@@ -50,11 +50,11 @@ If you use **rdfpy** in your work, please cite:
 ```
 @software{batuhan_yildirim_2020_3932173,
   author = {Batuhan Yildirim},
-  title = {by256/rdfpy: rdfpy-v0.1.4},
+  title = {by256/rdfpy: rdfpy-v0.1.5},
   month = {July},
   year = {2020},
   publisher = {Zenodo},
-  version = {v0.1.4},
+  version = {v0.1.5},
   doi = {10.5281/zenodo.3932173},
   url = {https://doi.org/10.5281/zenodo.3932173}
 }
