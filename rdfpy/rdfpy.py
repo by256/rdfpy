@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 
-def rdf2d(particles, dr, rho=None, eps=1e-15, progress=False):
+def rdf2d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
     """
     Computes 2D radial disribution functions g(r) of a set of particles of shape (N, 2).
     Particle must be placed in a 2D box of dimensions (width x height).
@@ -17,6 +17,11 @@ def rdf2d(particles, dr, rho=None, eps=1e-15, progress=False):
     rho : float, optional
         Number density. If left as None, box dimensions will be inferred from the
         particles and the number density will be calculated accordingly.
+    rcutoff : float
+        radii cutoff value between 0 and 1. The default value of 0.8 means the independent
+        variable (radius) over which the RDF is computed will range from 0 to 0.8*r_max. 
+        This removes the noise that occurs at r values close to r_max, due to fewer valid 
+        particles available to compute the RDF from at these r values.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
     progress : bool, optional
@@ -74,7 +79,7 @@ def rdf2d(particles, dr, rho=None, eps=1e-15, progress=False):
     return g_r, radii
 
 
-def rdf3d(particles, dr, rho=None, eps=1e-15, progress=False):
+def rdf3d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
     """
     Computes 3D radial disribution functions g(r) of a set of particles of shape (N, 3).
     Particle must be placed in a 3D cuboidal box of dimensions (width x height x depth).
@@ -88,6 +93,11 @@ def rdf3d(particles, dr, rho=None, eps=1e-15, progress=False):
     rho : float, optional
         Number density. If left as None, box dimensions will be inferred from the 
         particles and the number density will be calculated accordingly.
+    rcutoff : float
+        radii cutoff value between 0 and 1. The default value of 0.8 means the independent
+        variable (radius) over which the RDF is computed will range from 0 to 0.8*r_max. 
+        This removes the noise that occurs at r values close to r_max, due to fewer valid 
+        particles available to compute the RDF from at these r values.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance in KDTree.
     progress : bool, optional
