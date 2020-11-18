@@ -13,6 +13,7 @@ setuptools.setup(
     author_email='by256@cam.ac.uk',
     url='https://github.com/by256/rdfpy',
     packages=setuptools.find_packages(),
+    install_requires=['scipy', 'numpy', 'matplotlib'],
     license='MIT',
     classifiers=[
         'Programming Language :: Python :: 3',
