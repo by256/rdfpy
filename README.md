@@ -1,6 +1,6 @@
 # <img alt="rdfpy" src="./logo.png" height="60">
 
-rdfpy is a Python library for fast computation of 2D and 3D radial distribution functions.
+**rdfpy** is a Python library for fast computation of 2D and 3D radial distribution functions.
 
 ## Installation
 
@@ -21,7 +21,7 @@ g_r, radii = rdf3d(particles, dr=0.1)
 
 You can find a more detailed example in the [Documentation](https://rdfpy.readthedocs.io/).
 
-**Note:** In order for rdfpy to work correctly, your particles should spatially be in a cuboidal box, where the entire box is filled with particles.
+**Note:** In order for **rdfpy** to work correctly, your particles should spatially be in a cuboidal box, where the entire box is filled with particles.
 
 <!-- 
 ### What is a Radial Distribution Function?
@@ -41,7 +41,7 @@ where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)">
 
 ## Authors
 
-[Batuhan Yildirim](https://by256.github.io/)
+**rdfpy** was developed by [Batuhan Yildirim](https://by256.github.io/) under the supervision of [Prof. Jacqueline M. Cole](https://www.phy.cam.ac.uk/directory/colej).
 
 ## Citation
 
@@ -60,10 +60,16 @@ If you use **rdfpy** in your work, please cite:
 }
 ```
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3932173.svg)](https://doi.org/10.5281/zenodo.3932173)
+
+## Funding
+
+This project was financially supported by the Science and Technology Facilities Council (STFC) and the Royal Academy of Engineering (RCSRF1819\7\10).
+
 ## License
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3932173.svg)](https://doi.org/10.5281/zenodo.3932173)
+
 
 
