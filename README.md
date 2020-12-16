@@ -64,7 +64,7 @@ If you use **rdfpy** in your work, please cite:
 
 ## Funding
 
-This project was financially supported by the Science and Technology Facilities Council (STFC) and the Royal Academy of Engineering (RCSRF1819\7\10).
+This project was financially supported by the [Science and Technology Facilities Council (STFC)](https://stfc.ukri.org/) and the [Royal Academy of Engineering](https://www.raeng.org.uk/) (RCSRF1819\7\10).
 
 ## License
 
