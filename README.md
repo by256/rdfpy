@@ -48,15 +48,15 @@ where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)">
 If you use **rdfpy** in your work, please cite:
 
 ```
-@software{batuhan_yildirim_2020_3932173,
+@software{rdfpy,
   author = {Batuhan Yildirim},
-  title = {by256/rdfpy: rdfpy-v0.1.5},
-  month = {July},
-  year = {2020},
+  title = {{rdfpy: a Python library for fast computation of 2D and 3D radial distribution functions}},
+  month = jul,
+  year = 2020,
   publisher = {Zenodo},
   version = {v0.1.5},
-  doi = {10.5281/zenodo.3932173},
-  url = {https://doi.org/10.5281/zenodo.3932173}
+  doi = {10.5281/zenodo.4298486},
+  url = {https://doi.org/10.5281/zenodo.4298486}
 }
 ```
 
