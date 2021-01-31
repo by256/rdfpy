@@ -46,7 +46,7 @@ def rdf2d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
     # dimensions of box
     w, h = (max_x-min_x), (max_y-min_y)
 
-    r_max = (np.min([w, h]) / 2)*0.8
+    r_max = (np.min([w, h]) / 2)*rcutoff
     radii = np.arange(dr, r_max, dr)
     g_r = np.zeros(shape=(len(radii)))
     
@@ -122,7 +122,7 @@ def rdf3d(particles, dr, rho=None, rcutoff=0.8, eps=1e-15, progress=False):
     # dimensions of box
     w, h, d = (max_x-min_x), (max_y-min_y), (max_z-min_z)
 
-    r_max = (np.min([w, h, d]) / 2)*0.8
+    r_max = (np.min([w, h, d]) / 2)*rcutoff
     radii = np.arange(dr, r_max, dr)
     g_r = np.zeros(shape=(len(radii)))
     
