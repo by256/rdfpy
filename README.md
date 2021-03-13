@@ -23,22 +23,6 @@ You can find a more detailed example in the [Documentation](https://rdfpy.readth
 
 **Note:** In order for **rdfpy** to work correctly, your particles should spatially be in a cuboidal box, where the entire box is filled with particles.
 
-<!-- 
-### What is a Radial Distribution Function?
-
-The radial distribution function (RDF) (or pair correlation function) characterises the structure of a system of particles. If we select an arbitrary particle as the origin, the RDF describes the number of particles we would observe relative to the bulk density of the system, as a function of distance. This is calculated and averaged over every particle in the structure being considered. The formal definition of the RDF is
-
-<p align="center">
-  <img src="https://render.githubusercontent.com/render/math?math=g_{i}(r) = \frac{n_{i}(r)}{4 \pi r^{2}\delta r \rho}">
-</p>
-
-where <img src="https://render.githubusercontent.com/render/math?math=n_{i}(r)"> is the number of particles between distances <img src="https://render.githubusercontent.com/render/math?math=r"> and <img src="https://render.githubusercontent.com/render/math?math=r %2B \delta r">, and <img src="https://render.githubusercontent.com/render/math?math=\rho = \frac{N}{V}"> is the number density. Dividing by <img src="https://render.githubusercontent.com/render/math?math=\rho"> ensures that the RDF is centred around 1 when the density of particles observed at some distance does not deviate from the bulk density. Two examples of (1) a highly-ordered crystalline system and (2) a short-range ordered liquid are shown.
-
-<p float="left"  align="center">
-  <img src="rdfpy/examples/crystal.png" width="400" />
-  <img src="rdfpy/examples/water.png" width="400" /> 
-</p> -->
-
 ## Authors
 
 **rdfpy** was developed by [Batuhan Yildirim](https://by256.github.io/) under the supervision of [Prof. Jacqueline M. Cole](https://www.phy.cam.ac.uk/directory/colej).
@@ -49,14 +33,15 @@ If you use **rdfpy** in your work, please cite:
 
 ```
 @software{rdfpy,
-  author = {Batuhan Yildirim},
-  title = {{rdfpy: a Python library for fast computation of 2D and 3D radial distribution functions}},
-  month = jul,
-  year = 2020,
-  publisher = {Zenodo},
-  version = {v0.1.5},
-  doi = {10.5281/zenodo.4298486},
-  url = {https://doi.org/10.5281/zenodo.4298486}
+  author       = {Batuhan Yildirim and
+                  Hamish Galloway Brown},
+  title        = {by256/rdfpy: rdfpy-v0.1.7},
+  month        = mar,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v0.1.7},
+  doi          = {10.5281/zenodo.4603002},
+  url          = {https://doi.org/10.5281/zenodo.4603002}
 }
 ```
 
