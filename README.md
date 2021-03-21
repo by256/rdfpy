@@ -35,13 +35,13 @@ If you use **rdfpy** in your work, please cite:
 @software{rdfpy,
   author       = {Batuhan Yildirim and
                   Hamish Galloway Brown},
-  title        = {by256/rdfpy: rdfpy-v0.1.7},
+  title        = {by256/rdfpy: rdfpy-v1.0.0},
   month        = mar,
   year         = 2021,
   publisher    = {Zenodo},
-  version      = {v0.1.7},
-  doi          = {10.5281/zenodo.4603002},
-  url          = {https://doi.org/10.5281/zenodo.4603002}
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.4625675},
+  url          = {https://doi.org/10.5281/zenodo.4625675}
 }
 ```
 
