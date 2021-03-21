@@ -34,7 +34,7 @@ an RDF from. Also, to make the resulting function smoother, we add some noise to
 .. code-block:: python
 
    import numpy as np
-   from rdfpy import rdf3d
+   from rdfpy import rdf
    from pymatgen import Structure
 
    structure = Structure.from_file('/path/to/Ti_mp-46_computed.cif')
@@ -52,7 +52,7 @@ Finally we use **rdfpy** to compute the RDF from the coordinates, specifying the
 
 .. code-block:: python
 
-   g_r, radii = rdf3d(coords, dr=0.05)
+   g_r, radii = rdf(coords, dr=0.05)
 
 Plotting ``g_r`` against ``radii`` results in the following function.
 

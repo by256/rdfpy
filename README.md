@@ -12,11 +12,11 @@ $ pip install rdfpy
 
 ```python
 import numpy as np
-from rdfpy import rdf3d
+from rdfpy import rdf
 
 particles = np.random.uniform(0.0, 20.0, size=(2500, 3))  # random particles in a 20x20x20 box
 
-g_r, radii = rdf3d(particles, dr=0.1)
+g_r, radii = rdf(particles, dr=0.1)
 ```
 
 You can find a more detailed example in the [Documentation](https://rdfpy.readthedocs.io/).
