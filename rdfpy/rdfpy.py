@@ -13,7 +13,7 @@ def paralell_hist_loop(radii_and_indices, kdtree, particles, mins, maxs, N_radii
     for r_idx, r in radii_and_indices:
         r_idx = int(r_idx)
         # find all particles that are at least r + dr away from the edges of the box
-        valid_idxs = np.all([particles[(particles[:, i]-(r+dr) >= mins[i]) & (particles[:, i]+(r+dr) <= maxs[i])] for i in range(d)])
+        valid_idxs = np.bitwise_and.reduce([(particles[:, i]-(r+dr) >= mins[i]) & (particles[:, i]+(r+dr) <= maxs[i]) for i in range(d)])
         valid_particles = particles[valid_idxs]
         
         # compute n_i(r) for valid particles.
@@ -65,13 +65,13 @@ def rdf(particles, dr, rho=None, rcutoff=0.9, eps=1e-15, parallel=True, progress
         radii_splits = np.array_split(radii_and_indices, os.cpu_count(), axis=0)
         values = [(radii_splits[i], tree, particles, mins, maxs, N_radii, dr, eps, rho) for i in range(len(radii_splits))]
         with Pool() as pool:
-            results = pool.starmap(hist_loop_2d, values)
+            results = pool.starmap(paralell_hist_loop, values)
         g_r = np.sum(results, axis=0)
     else:
         g_r = np.zeros(shape=(len(radii)))
         for r_idx, r in enumerate(radii):
             # find all particles that are at least r + dr away from the edges of the box
-            valid_idxs = np.all([particles[(particles[:, i]-(r+dr) >= mins[i]) & (particles[:, i]+(r+dr) <= maxs[i])] for i in range(d)])
+            valid_idxs = np.bitwise_and.reduce([(particles[:, i]-(r+dr) >= mins[i]) & (particles[:, i]+(r+dr) <= maxs[i]) for i in range(d)])
             valid_particles = particles[valid_idxs]
             
             # compute n_i(r) for valid particles.
