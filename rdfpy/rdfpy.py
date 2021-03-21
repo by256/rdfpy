@@ -29,15 +29,56 @@ def paralell_hist_loop(radii_and_indices, kdtree, particles, mins, maxs, N_radii
     return g_r_partial
 
 def rdf(particles, dr, rho=None, rcutoff=0.9, eps=1e-15, parallel=True, progress=False):
+    """
+    Computes 2D or 3D radial distribution function g(r) of a set of particle 
+    coordinates of shape (N, d). Particle must be placed in a 2D or 3D cuboidal 
+    box of dimensions [width x height (x depth)].
+    
+    Parameters
+    ----------
+    particles : (N, d) np.array
+        Set of particle from which to compute the radial distribution function 
+        g(r). Must be of shape (N, 2) or (N, 3) for 2D and 3D coordinates 
+        repsectively.
+    dr : float
+        Delta r. Determines the spacing between successive radii over which g(r)
+        is computed.
+    rho : float, optional
+        Number density. If left as None, box dimensions will be inferred from 
+        the particles and the number density will be calculated accordingly.
+    rcutoff : float
+        radii cutoff value between 0 and 1. The default value of 0.8 means the 
+        independent variable (radius) over which the RDF is computed will range 
+        from 0 to 0.8*r_max. This removes the noise that occurs at r values 
+        close to r_max, due to fewer valid particles available to compute the 
+        RDF from at these r values.
+    eps : float, optional
+        Epsilon value used to find particles less than or equal to a distance 
+        in KDTree.
+    parallel : bool, optional
+        Option to enable or disable multiprocessing. Enabling affords 
+        significant increases in speed.
+    progress : bool, optional
+        Set to False to disable progress readout.
+        
+    
+    Returns
+    -------
+    g_r : (n_radii) np.array
+        radial distribution function values g(r).
+    radii : (n_radii) np.array
+        radii over which g(r) is computed
+    """
 
     if not isinstance(particles, np.ndarray):
         particles = np.array(particles)
     # assert particles array is correct shape
-    shape_err_msg = 'particles should be an array of shape N x d, where N is the number of \
-                     particles and d is the number of dimensions.'
+    shape_err_msg = 'particles should be an array of shape N x d, where N is \
+                     the number of particles and d is the number of dimensions.'
     assert len(particles.shape) == 2, shape_err_msg
     # assert particle coords are 2 or 3 dimensional
-    assert particles.shape[-1] in [2, 3], 'RDF can only be computed in 2 or 3 dimensions.'
+    assert particles.shape[-1] in [2, 3], 'RDF can only be computed in 2 or 3 \
+                                           dimensions.'
     
     start = time.time()
 
