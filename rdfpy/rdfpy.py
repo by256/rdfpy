@@ -47,19 +47,20 @@ def rdf(particles, dr, rho=None, rcutoff=0.9, eps=1e-15, parallel=True, progress
         Number density. If left as None, box dimensions will be inferred from 
         the particles and the number density will be calculated accordingly.
     rcutoff : float
-        radii cutoff value between 0 and 1. The default value of 0.8 means the 
+        radii cutoff value between 0 and 1. The default value of 0.9 means the 
         independent variable (radius) over which the RDF is computed will range 
-        from 0 to 0.8*r_max. This removes the noise that occurs at r values 
+        from 0 to 0.9*r_max. This removes the noise that occurs at r values 
         close to r_max, due to fewer valid particles available to compute the 
         RDF from at these r values.
     eps : float, optional
         Epsilon value used to find particles less than or equal to a distance 
         in KDTree.
     parallel : bool, optional
-        Option to enable or disable multiprocessing. Enabling affords 
+        Option to enable or disable multiprocessing. Enabling this affords 
         significant increases in speed.
     progress : bool, optional
-        Set to False to disable progress readout.
+        Set to False to disable progress readout (only valid when 
+        parallel=False).
         
     
     Returns
