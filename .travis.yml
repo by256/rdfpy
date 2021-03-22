@@ -17,6 +17,9 @@ jobs:
 install: 
   - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
   - pip3 install cython
+  - pip3 install numpy
+  - pip3 install scipy
+  - pip3 install matplotlib
   - python3 setup.py install || python setup.py install
 script:
   - python3 -m unittest || python -m unittest
