@@ -1,8 +1,10 @@
 # <img alt="rdfpy" src="./logo.png" height="100">
 
 [![Build Status](https://travis-ci.org/by256/rdfpy.svg?branch=master)](https://travis-ci.org/by256/rdfpy)
+[![Documentation Status](https://readthedocs.org/projects/rdfpy/badge/?version=latest)](https://rdfpy.readthedocs.io/en/latest/?badge=latest)
 [![PyPI version](https://badge.fury.io/py/rdfpy.svg)](https://pypi.org/project/rdfpy/)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/by256/rdfpy/blob/master/LICENSE)
+
 
 **rdfpy** is a Python library for fast computation of 2D and 3D radial distribution functions.
 
