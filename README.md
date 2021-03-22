@@ -1,4 +1,4 @@
-# <img alt="rdfpy" src="./logo.png" height="60">
+# <img alt="rdfpy" src="./logo.png" height="100">
 
 [![Build Status](https://travis-ci.org/by256/rdfpy.svg?branch=master)](https://travis-ci.org/by256/rdfpy)
 
