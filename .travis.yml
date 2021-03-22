@@ -1,0 +1,12 @@
+language: python
+os:
+  - linux
+  - windows
+  - osx
+python:
+  - 3.6
+  - 3.8
+install:
+  - python setup.py install
+script:
+  - python -m unittest
