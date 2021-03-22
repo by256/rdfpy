@@ -20,9 +20,11 @@ $ pip install rdfpy
 import numpy as np
 from rdfpy import rdf
 
-particles = np.random.uniform(0.0, 20.0, size=(2500, 3))  # random particles in a 20x20x20 box
+# create random particle coordinates in a 20x20x20 box
+coords = np.random.uniform(0.0, 20.0, size=(2500, 3))  
 
-g_r, radii = rdf(particles, dr=0.1)
+# compute radial distribution function
+g_r, radii = rdf(coords, dr=0.1)
 ```
 
 You can find a more detailed example in the [Documentation](https://rdfpy.readthedocs.io/).
