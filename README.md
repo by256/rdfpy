@@ -35,8 +35,8 @@ You can find a more detailed example in the [Documentation](https://rdfpy.readth
 
 **rdfpy** achieves significant speed-up due to:
 
-- **Fast nearest-neighbor look-up**: a KDTree is utilized to find particles within the required distances when counting the number of particles as a function of distance.
-- **Multiprocessing**: computation of the particle count histogram is parallelized across multiple cores, with each core sharing the aforementioned KDTree.
+- **Fast nearest-neighbor look-up**: a k-d tree is utilized to find particles within the required distances when counting the number of particles as a function of distance.
+- **Multiprocessing**: computation of the particle count histogram is parallelized across multiple cores, with each core sharing the aforementioned k-d tree.
 
 ## Authors
 
