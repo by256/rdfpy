@@ -23,7 +23,7 @@ from rdfpy import rdf
 # create random particle coordinates in a 20x20x20 box
 coords = np.random.uniform(0.0, 20.0, size=(2500, 3))  
 
-# compute radial distribution function
+# compute radial distribution function with step size = 0.1
 g_r, radii = rdf(coords, dr=0.1)
 ```
 
@@ -35,7 +35,7 @@ You can find a more detailed example in the [Documentation](https://rdfpy.readth
 
 **rdfpy** achieves significant speed-up due to:
 
-- **Fast nearest-neighbor look-up**: a k-d tree is utilized to find particles within the required distances when counting the number of particles as a function of distance.
+- **Fast nearest-neighbor look-up**: a k-d tree is utilized when counting the number of particles as a function of distance from an origin particle.
 - **Multiprocessing**: computation of the particle count histogram is parallelized across multiple cores, with each core sharing the aforementioned k-d tree.
 
 ## Authors
