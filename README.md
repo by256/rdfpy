@@ -6,7 +6,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/by256/rdfpy/blob/master/LICENSE)
 
 
-**rdfpy** is a Python library for fast computation of 2D and 3D radial distribution functions.
+**rdfpy** is a Python module for fast computation of 2D and 3D radial distribution functions.
 
 ## Installation
 
