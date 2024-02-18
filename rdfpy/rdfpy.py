@@ -85,8 +85,7 @@ def rdf(particles, dr, rho=None, rcutoff=0.9, eps=1e-15, parallel=True, progress
 
     mins = np.min(particles, axis=0)
     maxs = np.max(particles, axis=0)
-    # translate particles such that the particle with min coords is at origin
-    particles = particles - mins
+
 
     # dimensions of box
     dims = maxs - mins
@@ -102,6 +101,8 @@ def rdf(particles, dr, rho=None, rcutoff=0.9, eps=1e-15, parallel=True, progress
     tree = cKDTree(particles)
 
     if parallel:
+        # translate particles such that the particle with min coords is at origin
+        particles = particles - mins
         N_radii = len(radii)
         radii_and_indices = np.stack([np.arange(N_radii), radii], axis=1)
         radii_splits = np.array_split(radii_and_indices, os.cpu_count(), axis=0)
