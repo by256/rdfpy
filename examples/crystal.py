@@ -1,37 +1,44 @@
-import sys
-sys.path.append('..')
+"""Plot the particles and RDF of a crystal structure.
+
+Requires matplotlib: ``pip install rdfpy[examples]``.
+"""
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from rdfpy import rdf3d
 
-from matplotlib import rc
-rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})
-rc('text', usetex=True)
+from rdfpy import rdf
 
-particles = np.load('./crystal.npy')
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+particles = np.load(os.path.join(HERE, 'crystal.npy'))
 
 fig = plt.figure(figsize=(9, 9))
 ax = fig.add_subplot(111, projection='3d')
-ax.scatter(particles[:, 0], particles[:, 1], particles[:, 2], color='r', alpha=0.4, edgecolors='k', s=25)
+ax.scatter(particles[:, 0], particles[:, 1], particles[:, 2], color='r',
+           alpha=0.4, edgecolors='k', s=25)
 plt.axis('off')
-plt.savefig('./crystal-particles.png', bbox_inches='tight', pad_inches=0.0)
+plt.savefig(os.path.join(HERE, 'crystal-particles.png'), bbox_inches='tight',
+            pad_inches=0.0)
 plt.close()
 
-g_r, radii = rdf3d(particles, dr=0.1)
+g_r, radii = rdf(particles, dr=0.1)
 
-image = plt.imread('./crystal-particles.png')
+image = plt.imread(os.path.join(HERE, 'crystal-particles.png'))
 
-fig, axes = plt.subplots(1, 2, figsize=(12, 4), gridspec_kw={'width_ratios': [1, 2]})
+fig, axes = plt.subplots(1, 2, figsize=(12, 4),
+                         gridspec_kw={'width_ratios': [1, 2]})
 
 axes[0].imshow(image)
 axes[0].axis('off')
-axes[0].set_title(r'Crystal')
+axes[0].set_title('Crystal')
 
 axes[1].plot(radii, g_r, color='k', alpha=0.75)
-axes[1].hlines(y=1.0, xmin=0.0, xmax=max(radii), color='r', linestyle='--', alpha=0.4)
-axes[1].set_ylabel(r'g(r)')
-axes[1].set_xlabel(r'r')
+axes[1].hlines(y=1.0, xmin=0.0, xmax=max(radii), color='r', linestyle='--',
+               alpha=0.4)
+axes[1].set_ylabel('g(r)')
+axes[1].set_xlabel('r')
 axes[1].set_xlim(0.0, max(radii))
-plt.savefig('./crystal.png', bbox_inches='tight', pad_inches=0.25)
+plt.savefig(os.path.join(HERE, 'crystal.png'), bbox_inches='tight',
+            pad_inches=0.25)
 plt.show()
