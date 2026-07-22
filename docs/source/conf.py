@@ -22,7 +22,7 @@ copyright = '2020, Batuhan Yildirim'
 author = 'Batuhan Yildirim'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '2.0.0'
 
 
 # -- General configuration ---------------------------------------------------
@@ -30,9 +30,7 @@ release = '1.0.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-    'recommonmark'
-    ]
+extensions = []
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -50,7 +48,5 @@ master_doc = 'index'
 #
 html_theme = 'sphinx_rtd_theme'
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# No custom static files, so html_static_path is intentionally unset -- pointing
+# it at a directory that does not exist is the only warning in a clean build.

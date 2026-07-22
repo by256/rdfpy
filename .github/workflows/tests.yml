@@ -1,0 +1,54 @@
+name: tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # macOS and Windows default to the `spawn` start method, which is where
+        # library-level multiprocessing used to break for unguarded scripts.
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install .
+
+      # Run from outside the checkout, so `import rdfpy` resolves to the
+      # installed package rather than being shadowed by the local source
+      # directory. This is what makes the install step a real test of the
+      # packaging, not just a build smoke test.
+      - name: Run test suite against the installed package
+        run: |
+          cp -r tests "$RUNNER_TEMP/tests"
+          cd "$RUNNER_TEMP"
+          python -c "import rdfpy, pathlib, sys; p = pathlib.Path(rdfpy.__file__).resolve()
+          assert 'site-packages' in p.parts, 'testing the checkout, not the install: %s' % p
+          print('testing installed package at', p)"
+          python -m unittest discover -v
+
+      - name: Run test suite with assertions disabled
+        run: |
+          cd "$RUNNER_TEMP"
+          python -O -m unittest discover -v
