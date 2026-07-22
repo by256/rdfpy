@@ -1,0 +1,100 @@
+name: release
+
+# Publishing uses PyPI Trusted Publishing (OIDC): PyPI trusts this specific
+# workflow in this specific repository, so there is no API token stored
+# anywhere and nothing to leak or rotate.
+#
+#   - Push a tag v*        -> builds, publishes to TestPyPI, then to PyPI.
+#   - Run manually         -> builds and publishes to TestPyPI only, so the
+#                             whole path can be rehearsed without burning a
+#                             version number on the real index.
+#
+# A PyPI upload is permanent: a version can be yanked but never replaced.
+# The `pypi` job runs in a GitHub environment, so you can require a manual
+# approval on it in the repository settings.
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build sdist and wheel
+        run: |
+          python -m pip install --upgrade pip build twine
+          python -m build
+          twine check dist/*
+
+      - name: Check the version is not already on PyPI
+        run: |
+          VERSION=$(python -c "import re,pathlib; print(re.search(r\"version='([^']+)'\", pathlib.Path('setup.py').read_text()).group(1))")
+          echo "building version $VERSION"
+          if curl -sf "https://pypi.org/pypi/rdfpy/$VERSION/json" > /dev/null; then
+            echo "::error::rdfpy $VERSION is already on PyPI. Versions cannot be replaced; bump the version."
+            exit 1
+          fi
+          echo "$VERSION is free"
+
+      - name: Confirm the tag matches the package version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          VERSION=$(python -c "import re,pathlib; print(re.search(r\"version='([^']+)'\", pathlib.Path('setup.py').read_text()).group(1))")
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$VERSION" != "$TAG" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match setup.py version $VERSION"
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+
+  testpypi:
+    name: Publish to TestPyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/rdfpy
+    permissions:
+      id-token: write        # required for trusted publishing
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          skip-existing: true
+
+  pypi:
+    name: Publish to PyPI
+    needs: [build, testpypi]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/rdfpy
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
