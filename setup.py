@@ -10,7 +10,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     author='Batuhan Yildirim',
-    author_email='by256@cam.ac.uk',
+    author_email='batuhanyild@gmail.com',
     url='https://github.com/by256/rdfpy',
     packages=setuptools.find_packages(exclude=['tests', 'tests.*']),
     python_requires='>=3.9',
